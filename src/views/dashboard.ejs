@@ -1,14 +1,14 @@
-<% if(success_msg !== '') { %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= success_msg %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="dashboard-page">
+    <header class="dashboard-page__header">
+        <%- include ("partials/nav") %> 
+    </header>
+    <div class="dashboard">
+        <h1 class="dashboard__title">Welcome</h1>
+        <button class="dashboard__logout" id="logout-bttn">Logout</button>
     </div>
-
-<% } %> 
-
-<div class="dashboard">
-    <h1 class="dashboard__title">Welcome</h1>
-    <button class="dashboard__logout" id="logout-bttn">Logout</button>
+    <%- include ("partials/footer") %> 
 </div>
+
+
 
 

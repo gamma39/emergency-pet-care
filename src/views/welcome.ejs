@@ -1,21 +1,6 @@
-<body >
+<div class="welcome-page">
     <header class="header">
-        <div class="navigation">
-            <a href="/"><img src="pictures/logo_transparent.png" alt="logo" class="navigation__logo"></a>
-            <nav class="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><a href="/" class="navigation__link">Home</a> </li>
-                    <li class="navigation__item"><a href="#about" class="navigation__link">About</a></li>
-                    <li class="navigation__item"><a href="#contact" class="navigation__link">Contact</a></li>
-                    <li class="navigation__item"><a href="#faq" class="navigation__link">FAQ</a></li>
-                </ul>
-                <button class="navigation__login" id="login">Login</button>
-                
-                <button class="navigation__signup" id="signup">Sign Up</button>
-    
-                
-            </nav>
-        </div>
+        <%- include("partials/nav") %> 
         <h1 class="heading-primary">
             <span class="heading-primary__main">Natural Disaster</span>
             <span class="heading-primary__main">Pet Care</span>
@@ -82,7 +67,7 @@
                     >
                     <input class="signUp-form__submit" id="submit" type="submit" value="Register">
                 </form>
-
+        
             </div>
         </div>
     </header>
@@ -99,9 +84,7 @@
         </div>
     </main>
     
-    <footer class="footer">
-        <h2>This is a footer</h2>
-    </footer>
+    <%- include("partials/footer") %> 
     
     
-</body>
+</div>
