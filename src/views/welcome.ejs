@@ -1,0 +1,107 @@
+<body >
+    <header class="header">
+        <div class="navigation">
+            <a href="/"><img src="pictures/logo_transparent.png" alt="logo" class="navigation__logo"></a>
+            <nav class="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="/" class="navigation__link">Home</a> </li>
+                    <li class="navigation__item"><a href="#about" class="navigation__link">About</a></li>
+                    <li class="navigation__item"><a href="#contact" class="navigation__link">Contact</a></li>
+                    <li class="navigation__item"><a href="#faq" class="navigation__link">FAQ</a></li>
+                </ul>
+                <button class="navigation__login" id="login">Login</button>
+                
+                <button class="navigation__signup" id="signup">Sign Up</button>
+    
+                
+            </nav>
+        </div>
+        <h1 class="heading-primary">
+            <span class="heading-primary__main">Natural Disaster</span>
+            <span class="heading-primary__main">Pet Care</span>
+        </h1>
+        <div class="cta">
+            <p class="heading-secondary">Find help from locals here!</p>
+            <a href="/users.html" class="search-bttn">Search</a>
+        </div>
+        
+        <div class="popup" id="popup">
+            <div class="popup__loginBox" id="loginBox">
+                <span class="popup__closeBtn" id="closeLoginBtn">&times;</span>
+                <div>
+                    <svg class="popup__icon">
+                        <use xlink:href="../pictures/sprite.svg#icon-user"></use>
+                    </svg>
+                </div>
+                
+                <form action="/users/login" method="POST" class="login-form" autocomplete="off">
+                    <input name="userName" class="login-form__input" type="text" placeholder="Username" required>
+                    <input name="password" class="login-form__input" type="password" placeholder="Password" required>
+                    <input class="login-form__submit" type="submit" value="Login">
+                </form>
+                <a href="#" class="popup__password">Forgot Password?</a>
+            </div>
+            <div class="popup__signUpBox" id="signUpBox">
+                <span class="popup__closeBtn" id="closeSubmitBtn">&times;</span>
+                <h2 class="popup__register-title">Register</h2>
+                <%- include ("partials/messages") %>
+                <form action="/users/register" method="POST" class="signUp-form" autocomplete="off">
+                    <input 
+                        name="email" 
+                        type="email"  
+                        class="signUp-form__input" 
+                        placeholder="Email"
+                        value="<%= typeof email != 'undefined' ? email : ''  %> " 
+                        required
+                    >
+                    <input 
+                        name="userName" 
+                        type="text" 
+                        class="signUp-form__input" 
+                        placeholder="Username"
+                        value="<%= typeof userName != 'undefined' ? userName : ''  %> "
+                        required
+                    >
+                    <input 
+                        name="password" 
+                        type="password"  
+                        id="password" 
+                        class="signUp-form__input" 
+                        placeholder="Password" 
+                        
+                        required
+                    >
+                    <input 
+                        name="password2" 
+                        type="password" 
+                        id="password2" 
+                        class="signUp-form__input" 
+                        placeholder="Confirm Password" 
+                        
+                        required
+                    >
+                    <input class="signUp-form__submit" id="submit" type="submit" value="Register">
+                </form>
+
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        
+        <div class="about" id="about">
+            <h2 class="about__title section-title">About</h2>
+        </div>
+        <div class="contact" id="contact">
+            <h2 class="contact__title section-title">Contact Us</h2>
+        </div>
+        <div class="faq" id="faq">
+            <h2 class="faq__title section-title">FAQ</h2>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <h2>This is a footer</h2>
+    </footer>
+    
+    
+</body>

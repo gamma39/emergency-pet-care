@@ -1,0 +1,84 @@
+.popup {
+    background-color: rgba(0,0,0, 0.6);
+    width: 100%;
+    min-height: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    &__closeBtn {
+        margin-left: auto;
+        font-size: 2.5rem;
+        color: var(--color-grey-dark-1);
+        transition: all .2s;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.5);
+        }
+
+        &:active {
+            transform: scale(1) translateY(1px);
+            color: #000;
+
+        }
+    }
+
+
+    //LOGIN POPUP
+    &__loginBox {
+    
+        background-color: var(--color-grey-light-1);
+        padding: 1rem 2rem 2rem 2rem;
+        width: 50%;
+        min-height: 50vh;
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0 1.5rem 4rem rgba(0,0,0, 1);
+    }
+
+    
+
+    &__icon {
+        
+        fill: var(--color-grey-dark-1);
+        width: 8rem;
+        height: 8rem;
+        padding-bottom: 1rem;
+        border-radius: 50%;
+        
+    }
+
+    &__password {
+        font-size: 1.4rem;
+        color: var(--color-grey-dark-1);
+    }
+
+    //SIGNUP POPUP  
+    &__signUpBox {
+        background-color: var(--color-grey-light-1);
+        padding: 1rem 2rem 2rem 2rem;
+        width: 50%;
+        min-height: 50vh;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0 1.5rem 4rem rgba(0,0,0, 1);
+    }
+
+    &__register-title {
+        color: var(--color-green);
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    
+}
