@@ -10,6 +10,7 @@ const indexRouter = require('./routers/index')
 const app = express()
 console.log(__dirname + '..' + '/public')
 
+
 app.use(expressLayouts)
 app.set('views', path.join(__dirname + '/views'))
 app.set('view engine', 'ejs')
@@ -30,7 +31,6 @@ app.use(session({
 
 //connect flash
 app.use(flash())
-
 
 //Routes
 app.use(express.static('public'))

@@ -3,14 +3,19 @@
     <nav class="navigation__nav">
         <ul class="navigation__list">
             <li class="navigation__item"><a href="/" class="navigation__link">Home</a> </li>
-            <li class="navigation__item"><a href="#about" class="navigation__link">About</a></li>
-            <li class="navigation__item"><a href="#contact" class="navigation__link">Contact</a></li>
-            <li class="navigation__item"><a href="#faq" class="navigation__link">FAQ</a></li>
+            <li class="navigation__item"><a href="/#about" class="navigation__link">About</a></li>
+            <li class="navigation__item"><a href="/#contact" class="navigation__link">Contact</a></li>
+            <li class="navigation__item"><a href="/#faq" class="navigation__link">FAQ</a></li>
         </ul>
-        <button class="navigation__login" id="login">Login</button>
-        
+        <% if (currentUser) { %> 
+            <button class="navigation__logout" id="logout">Logout</button>
+        <% } else{ %> 
+            <button class="navigation__login" id="login">Login</button>
+            
+        <% } %> 
         <button class="navigation__signup" id="signup">Sign Up</button>
     
         
     </nav>
 </div>
+

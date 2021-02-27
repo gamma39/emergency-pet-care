@@ -4,9 +4,10 @@ const User = require("../models/user");
 const auth = require("../middleware/auth");
 const path = require("path");
 
+
 //backend page route for users
-router.get("/dashboard", async (req, res) => {
-  res.render("dashboard", { success_msg: req.flash('success_msg')});
+router.get("/dashboard", auth, async (req, res) => {
+  res.render("dashboard");
 });
 
 //CREATE NEW USER ENDPOINT  
@@ -60,11 +61,11 @@ router.post("/users/register", async (req, res) => {
       try {
         //save user to database
         await newUser.save();
+        res.locals.user = newUser
         //create jwt
         const token = await newUser.generateAuthToken();
         //send token as cookie to browser
         res.cookie("auth_token", token);
-        req.flash('success_msg', 'Thank you for registering')
         //redirect to dashboard on successful creation of user
         res.redirect("/dashboard");
       } catch (e) {

@@ -1,7 +1,8 @@
 const express = require('express')
+const verify = require('../middleware/verify')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', verify, (req, res) => {
     res.render('welcome')
 })
 

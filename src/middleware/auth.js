@@ -14,10 +14,13 @@ const auth = async (req, res, next) => {
 
         req.token = token
         req.user = user
+        res.locals.currentUser = req.user
         next()
 
     } catch (e) {
-        res.status(401).send({ error: 'Please authenticate.'})
+        req.session.error = 'Please authenticate'
+        res.status(401).redirect("/")
+
     } 
 }
 
