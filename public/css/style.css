@@ -284,22 +284,22 @@ html {
     color: var(--color-blue-dark-1); }
     .navigation__link:hover {
       color: var(--color-red); }
-  .navigation__login, .navigation__signup {
+  .navigation__login, .navigation__logout, .navigation__signup, .navigation__dashboard {
     margin-left: 1rem;
     font: inherit;
     font-size: 1.5rem;
     color: var(--color-blue-dark-1);
     transition: all .2s; }
-    .navigation__login:hover, .navigation__signup:hover {
+    .navigation__login:hover, .navigation__logout:hover, .navigation__signup:hover, .navigation__dashboard:hover {
       cursor: pointer;
       transform: scale(1.1); }
-    .navigation__login:active, .navigation__login:focus, .navigation__signup:active, .navigation__signup:focus {
+    .navigation__login:active, .navigation__login:focus, .navigation__logout:active, .navigation__logout:focus, .navigation__signup:active, .navigation__signup:focus, .navigation__dashboard:active, .navigation__dashboard:focus {
       outline: none;
       transform: scale(1); }
-  .navigation__login {
+  .navigation__login, .navigation__logout {
     border: none;
     background-color: var(--color-pink); }
-  .navigation__signup {
+  .navigation__signup, .navigation__dashboard {
     padding: 0 1.5rem;
     border: none;
     color: #fff;

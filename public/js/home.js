@@ -1,3 +1,5 @@
+//Login and register for front page
+
 //Elements
 //variables from index.html
 const $selectLoginButton = document.getElementById('login')

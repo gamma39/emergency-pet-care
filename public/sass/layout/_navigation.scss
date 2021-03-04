@@ -42,7 +42,9 @@
     }
 
     &__login,
-    &__signup {
+    &__logout,
+    &__signup,
+    &__dashboard {
         
         margin-left: 1rem;
         font: inherit;
@@ -63,14 +65,14 @@
         
     }
 
-    &__login {
+    &__login, &__logout {
         border: none;
         background-color: var(--color-pink);
 
         
     }
 
-    &__signup {
+    &__signup, &__dashboard {
         padding: 0 1.5rem;
         border: none;
         color: #fff;

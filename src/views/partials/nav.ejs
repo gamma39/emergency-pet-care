@@ -8,14 +8,17 @@
             <li class="navigation__item"><a href="/#faq" class="navigation__link">FAQ</a></li>
         </ul>
         <% if (currentUser) { %> 
-            <button class="navigation__logout" id="logout">Logout</button>
+            <button class="navigation__logout" id="logout-btn">Logout</button>
+            <button class="navigation__dashboard" id="dashboard-btn">Dashboard</button>
         <% } else{ %> 
             <button class="navigation__login" id="login">Login</button>
+            <button class="navigation__signup" id="signup">Sign Up</button>
             
         <% } %> 
-        <button class="navigation__signup" id="signup">Sign Up</button>
+        
     
         
     </nav>
 </div>
+
 
