@@ -1,56 +1,64 @@
-.login-form {
-    width: 75%;
-    height: auto;
+.login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    //margin-top: -5rem;
+    justify-content: flex-start;
+    padding: 3rem 7.2rem 7.2rem 7.2rem;
+    background-color: var(--color-blue);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    width: 100%;
+
+    &__icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 3rem;
+    }
+
+    &__icon {
+        height: 4rem;
+        width: 4rem;
+        fill: var(--color-white);
+    }
+
+    &__text {
+        margin-left: 2rem;
+        font-size: 3.6rem;
+        color: var(--color-white);
+    }
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
 
     &__input {
-        width: 70%;
-        padding: 1rem 2rem;
-        margin-bottom: 2rem;
-        font-size: 1.5rem;
-        font-family: inherit;
+        width: 90%;
+        height: 6.9rem;
+        border-radius: 1rem;
         border: none;
-        border-radius: 5px;
-        border-bottom: 3px solid transparent;
-
-        &:focus {
-            outline: none;
-            box-shadow: 0 1rem 2rem rgba(#000, .1);
-            border-bottom: 3px solid var(--color-blue-dark-1);
-        }
-
-        &:focus:invalid {
-            border-bottom: 3px solid var(--color-red);
-        }
+        margin: 2rem;
+        font: inherit;
+        font-size: 3.6rem;
+        font-weight: 300;
+        padding: 1rem 0 1rem 1rem;
     }
 
     &__submit {
-        text-transform: uppercase;
-        padding: 1.5rem 6rem;
-        margin-bottom: 1rem;
-        font-family: inherit;
-        font-size: 1.5rem;
-        color: #fff;
+        width: 20.4rem;
+        height: 5.469rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2rem;
+        border-radius: 2.5rem;
         border: none;
-        cursor: pointer;
-        border-radius: 10rem;
-        background-color: var(--color-blue-dark-1);
-        transition: all .2s;
-
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 1rem 2rem rgba(#000,.2);
-        }
-
-        &:active,
-        &:focus {
-            outline: none;
-            transform: translateY(1px);
-            box-shadow: 0 .5rem 1rem rgba(#000,.2);
-        }
+        font: inherit;
+        font-weight: 300;
+        font-size: 3.6rem;
+        background-color: var(--color-white);
+        box-shadow: 1px 1px 2px rgba(0,0,0, 0.5);
+        
     }
 }
+

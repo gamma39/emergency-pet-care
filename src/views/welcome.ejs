@@ -1,102 +1,160 @@
 <div class="welcome-page" onload="checkRegistration()">
     <header class="header">
         <%- include("partials/nav") %> 
-        <h1 class="heading-primary">
-            <span class="heading-primary__main">Natural Disaster</span>
-            <span class="heading-primary__main">Pet Care</span>
-        </h1>
-        <div class="cta">
-            <p class="heading-secondary">Find help from locals here!</p>
-            <a href="/users.html" class="search-bttn">Search</a>
-        </div>
-        
-        <div class="popup" id="popup">
-            <div class="popup__loginBox" id="loginBox">
-                <span class="popup__closeBtn" id="closeLoginBtn">&times;</span>
-                <div>
-                    <svg class="popup__icon">
-                        <use xlink:href="../pictures/sprite.svg#icon-user"></use>
-                    </svg>
+        <div class="hero">
+            <div class="left-side">
+                <h1 class="heading-primary">
+                    <span class="heading-primary__main">Natural</span>
+                    <span class="heading-primary__main">Disaster</span>
+                    <span class="heading-primary__main">Pet</span>
+                    <span class="heading-primary__main">Care</span>
+                </h1>
+                <div class="cta">
+                    <p class="heading-secondary">Find help from locals today</p>
+                    <a href="/users.html" class="cta__search-btn">Learn more!</a>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="login-container">
+                    <div class="login-container__icon-container">
+                        <svg class="login-container__icon">
+                            <use xlink:href="../pictures/sprite.svg#icon-user"></use>
+                       </svg>
+                       <p class="login-container__text">Sign In</p>
+                    </div>
+                    
+                   <form action="/users/login" method="POST" class="login-form" autocomplete="off">
+                        <input name="email" class="login-form__input" type="email" placeholder="Email" required>
+                        <input name="password" class="login-form__input" type="password" placeholder="Password" required>
+                        <input class="login-form__submit" type="submit" value="Login">
+                    </form>
                 </div>
                 
-                <form action="/users/login" method="POST" class="login-form" autocomplete="off">
-                    <input name="userName" class="login-form__input" type="text" placeholder="Username" required>
-                    <input name="password" class="login-form__input" type="password" placeholder="Password" required>
-                    <input class="login-form__submit" type="submit" value="Login">
-                </form>
-                <a href="#" class="popup__password">Forgot Password?</a>
             </div>
-            <div class="popup__signUpBox" id="signUpBox">
-                <span class="popup__closeBtn" id="closeSubmitBtn">&times;</span>
-                <h2 class="popup__register-title">Register</h2>
-                <%- include ("partials/messages") %>
-                <form action="/users/register" method="POST" class="signUp-form" autocomplete="off">
-                    <input 
-                        name="email" 
-                        type="email"  
-                        class="signUp-form__input" 
-                        placeholder="Email"
-                        value="<%= typeof email != 'undefined' ? email : ''  %> " 
-                        required
-                    >
-                    <input 
-                        name="userName" 
-                        type="text" 
-                        class="signUp-form__input" 
-                        placeholder="Username"
-                        value="<%= typeof userName != 'undefined' ? userName : ''  %> "
-                        required
-                    >
-                    <input 
-                        name="First Name" 
-                        type="text" 
-                        class="signUp-form__input" 
-                        placeholder="First Name"
             
-                        required
-                    >
-                    <input 
-                        name="Last Name" 
-                        type="text" 
-                        class="signUp-form__input" 
-                        placeholder="Last Name"
-                        
-                        required
-                    >
-                    <input 
-                        name="password" 
-                        type="password"  
-                        id="password" 
-                        class="signUp-form__input" 
-                        placeholder="Password" 
-                        
-                        required
-                    >
-                    <input 
-                        name="password2" 
-                        type="password" 
-                        id="password2" 
-                        class="signUp-form__input" 
-                        placeholder="Confirm Password" 
-                        
-                        required
-                    >
-                    <input class="signUp-form__submit" id="submit" type="submit" value="Register">
-                </form>
-        
-            </div>
         </div>
     </header>
+
+
     <main class="main">
         
         <div class="about" id="about">
-            <h2 class="about__title section-title">About</h2>
+            <div class="about__left-side">
+                <h2 class="about__heading heading2">Why we started PetSafe</h2>
+                <h3 class="about__subheading subheading">A place to find help and give back to your community</h3>
+                <p class="about__text1 paragraph">
+                    Every year people are forced to abandon their homes and spend days or weeks in shelters 
+                    due to fires, floods, tornadoes, and other natural disasters. In a best case scenario, 
+                    you might have a friend or family member who can take in your pet. In the worst case, 
+                    you are forced to leave them behind. 
+                </p>
+            </div>
+            <div class="about__right-side">
+                <img src="/pictures/dog.jpg" alt="dog looking out window" class="about__dog-img" role="presentation">
+                <img src="/pictures/cat.jpg" alt="cat on stairs" class="about__cat-img" role="presentation">
+                <p class="about__text2 paragraph">
+                    We want to provide people with the opportunity to find locals in their community who 
+                    would be willing to foster their beloved pets so that they can spend more time staying 
+                    safe and less time worrying about the furry members of their family.  The process is easy. 
+                    Simply sign up for an account and you will be both a volunteer and eligible to receive help. 
+                    We get what we give. In times of crisis, we must band together and help each other in whatever 
+                    way we can.
+                </p>
+            </div>
         </div>
         <div class="contact" id="contact">
-            <h2 class="contact__title section-title">Contact Us</h2>
+            <h2 class="contact__title heading2">Let's connect!</h2>
+            <form action="" class="contact__email-form">
+                <input name="name" class="contact__input" type="text" placeholder="Your name" required>
+                <input name="email" class="contact__input" type="email" placeholder="Your email" required>
+                <textarea name="message" id="message" cols="30" rows="10" placeholder="Message" class="contact__message"></textarea>
+                <input class="contact__submit" type="submit" value="Send Message">
+            </form>
         </div>
         <div class="faq" id="faq">
-            <h2 class="faq__title section-title">FAQ</h2>
+            <h2 class="faq__title section-title heading2">Frequently Asked Questions</h2>
+            <div class="faq__container">
+                <div class="faq__accordian">
+                    <div class="faq__question">
+                        <input type="radio" name="question" id="question1" class="faq__input">
+                        <label for="question1" class="faq__label">How do I volunteer to help?</label>
+                        <ion-icon class="faq__add-outline" name="add-outline"></ion-icon>
+                        <ion-icon class="faq__remove-outline" name="remove-outline"></ion-icon>
+                        <div class="faq__answer">
+                            <p class="faq__text">
+                                Click on the Register Button on the navigation menu and sign up for an account. 
+                                If anyone in your area needs help with their pets, they will be able to send you 
+                                an email with a request.  It will be up to each person to decide if they wish to help.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="faq__accordian">
+                    <div class="faq__question">
+                        <input type="radio" name="question" id="question2" class="faq__input">
+                        <label for="question2" class="faq__label">What if I need help but don’t have the resources to help others?</label>
+                        <ion-icon class="faq__add-outline" name="add-outline"></ion-icon>
+                        <ion-icon class="faq__remove-outline" name="remove-outline"></ion-icon>
+                        <div class="faq__answer">
+                            <p class="faq__text">
+                                While signing up for PetSafe does require you to be willing to receive emails from other users,
+                                there are no requirements for responding to emails. You will remain anonymous to other users unless
+                                you choose to respond to their emails.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="faq__accordian">
+                    <div class="faq__question">
+                        <input type="radio" name="question" id="question3" class="faq__input">
+                        <label for="question3" class="faq__label">What if no one is in my area that can help me?</label>
+                        <ion-icon class="faq__add-outline" name="add-outline"></ion-icon>
+                        <ion-icon class="faq__remove-outline" name="remove-outline"></ion-icon>
+                        <div class="faq__answer">
+                            <p class="faq__text">
+                                Unfortunately, we cannot guarantee help as this app relies on the participation of locals for its success. 
+                                In the event that no one is available, please contact your local animal shelter to find information about pet
+                                drop off locations near you.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="faq__accordian">
+                    <div class="faq__question">
+                        <input type="radio" name="question" id="question4" class="faq__input">
+                        <label for="question4" class="faq__label">What kind of animals can be fostered during emergencies?</label>
+                        <ion-icon class="faq__add-outline" name="add-outline"></ion-icon>
+                        <ion-icon class="faq__remove-outline" name="remove-outline"></ion-icon>
+                        <div class="faq__answer">
+                            <p class="faq__text">
+                                This site caters to people with the most common pets which are dogs and cats. Feel free to include other
+                                animals in your request for help if necessary. It is possible that someone will be able to care for them
+                                in an emergency situation.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="faq__accordian">
+                    <div class="faq__question">
+                        <input type="radio" name="question" id="question5" class="faq__input">
+                        <label for="question5" class="faq__label">How do I know the person I am contacting is legitimate?</label>
+                        <ion-icon class="faq__add-outline" name="add-outline"></ion-icon>
+                        <ion-icon class="faq__remove-outline" name="remove-outline"></ion-icon>
+                        <div class="faq__answer">
+                            <p class="faq__text">
+                                While we try to make sure that everyone who signs up is legitimate, you should be as careful as possible 
+                                when meeting a stranger. Always meet in a public area and be sure to exchange relevant information before 
+                                giving your pet to someone you do not know.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
     </main>
     

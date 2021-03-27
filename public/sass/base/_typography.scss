@@ -1,0 +1,47 @@
+.heading-primary {
+    color: var(--color-blue-dark-1);
+    text-align: left;
+    &__main {
+        font-size: 9.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.1;
+        letter-spacing: .4rem;
+        display: block;
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+
+    &__main::first-letter {
+        color: var(--color-blue);
+    }
+
+    
+}
+
+.heading-secondary {
+    font-size: 3.6rem;
+    font-weight: 400;
+}
+
+.heading2 {
+    font-size: 7.2rem;
+    font-weight: 700;
+}
+
+.heading4 {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.subheading {
+    font-size: 3.6rem;
+    font-weight: 400;
+}
+
+.paragraph {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
