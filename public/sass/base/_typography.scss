@@ -11,10 +11,21 @@
         animation-name: moveInLeft;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+
+        @include respond(tab-port) {
+            
+            font-size: 6rem;
+            text-align: center;
+            
+        }
     }
 
     &__main::first-letter {
         color: var(--color-blue);
+
+        @include respond(tab-port) {
+           color: var(--color-black);
+        }
     }
 
     
@@ -23,11 +34,21 @@
 .heading-secondary {
     font-size: 3.6rem;
     font-weight: 400;
+
+    @include respond(tab-port) {
+        font-size: 2rem;
+        text-align: center;
+    }
 }
 
 .heading2 {
     font-size: 7.2rem;
     font-weight: 700;
+
+    @include respond(tab-port) {
+        font-size: 3.6rem;
+        text-align: center;
+    }
 }
 
 .heading4 {
@@ -38,10 +59,23 @@
 .subheading {
     font-size: 3.6rem;
     font-weight: 400;
+
+    @include respond(tab-port) {
+        font-size: 2rem;
+        text-align: center;
+    }
 }
 
 .paragraph {
     font-size: 2rem;
     font-weight: 300;
+
+    @include respond(tab-port) {
+        font-size: 1.6rem;
+        word-wrap: break-word;
+        line-height: 200%;
+        font-weight: 400;
+        
+    }
 }
 

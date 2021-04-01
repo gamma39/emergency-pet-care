@@ -5,6 +5,7 @@
     left: 0;
     overflow: hidden;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     z-index: 100;
@@ -21,34 +22,117 @@
         font-size: 6.4rem;
         font-weight: 900;
         color: var(--color-blue);
+        display: inline-block;
+        transition: all .2s ease-in;
+
+        &:focus,
+        &:hover {
+            outline: 3px solid var(--color-blue);
+            transform: translateY(4px);
+        }
+
+        @include respond(tab-port) {
+            font-size: 3.4rem;
+        }
     }
 
     &__logo-text2 {
         font-size: 4.8rem;
         font-weight: 700;
         color: var(--color-black);
+
+        @include respond(tab-port) {
+            font-size: 2.2rem;
+        }
     }
 
-    
+    &__hamburger {
+        display: none;
+        position: relative;
+
+        @include respond(tab-land) {
+            display: block;
+        }
+    }
+
+    &__hamburger,
+    &__hamburger::before,
+    &__hamburger::after {
+        width: 2em;
+        height: 3px;
+        background: var(--color-black);
+        transition: all .2s ease-in-out;
+    }
+    &__hamburger::before,
+    &__hamburger::after {
+        content: "";
+        position: absolute;
+        left: 0;
+    }
+
+    &__hamburger::before {
+        bottom: 6px;
+    }
+
+    &__hamburger::after {
+        top: 6px;
+    }
+
+    &__toggle {
+        display: none;
+    }
+
 
     &__list {
         display: flex;
         margin-bottom: 0;
         justify-content: space-around;
         list-style: none;
+
+        @include respond(tab-land) {
+            display: none;
+        }
         
+    }
+    &__toggle:checked + &__label > &__hamburger {
+        @include respond(tab-land) {
+            transform: rotate(45deg);
+
+            &::after {
+                top: 0px;
+            }
+
+            &::before {
+                transform: rotate(-90deg);
+                bottom: 0px;
+            }
+        }
+        
+    }
+
+
+    //make menu list show onclick of checkbox when hamburger menu is showing
+    &__toggle:checked ~ &__list {
+        @include respond(tab-land) {
+            margin-top: 2rem;
+            display: flex;
+            flex-basis: 100%;
+            align-items: center;
+            flex-direction: column;
+
+        }
     }
 
     &__item {
         padding: 1rem;
-        
-
-        
-        
     }
 
     &__item:not(:last-child) {
         margin-right: 3rem;
+
+        @include respond(tab-land) {
+            margin-right: 0;
+        }
     }
 
     &__link {
@@ -56,6 +140,17 @@
         text-decoration: none;
         font-size: 2.4rem;
         font-weight: 300;
+        display: inline-block;
+        transition: all .2s ease-in;
+
+        &:hover,
+        &:focus {
+            outline: none;
+            transform: scale(1.2);
+            text-decoration: underline;
+            color: var(--color-blue);
+
+        }
     }
 
     
@@ -63,15 +158,41 @@
     
 
     &__signup, &__dashboard {
-        padding: 1rem 2.5rem;
-        font-size: 2.4rem;
-        font-weight: 400;
-        border: none;
-        border-radius: 2.5rem;
-        color: #ffffff;
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+        color: var(--color-white);
         background-color: var(--color-blue);
-        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        width: 20.4rem;
+        height: 5.469rem;
+        border-radius: 2.5rem;
+        font: inherit;
+        font-weight: 300;
+        font-size: 2.4rem;
+        padding: 1rem 2rem;
+        margin-top: 2rem;
+        box-shadow: 1px 1px 2px rgba(0,0,0, 0.5);          
+
+        &:active,
+        &:focus,
+        &:hover {
+            outline: none;
+            color: var(--color-blue);
+            background-color: var(--color-white);
+            transform: scale(0.95) translateY(5px);
+
+        }
+
+        @include respond(tab-land) {
+            display: none;
+        }
         
+    }
+
+    &__toggle:checked ~ &__signup, &__dashboard {
+        @include respond(tab-land) {
+            display: inline-block;
+        }
     }
 
 

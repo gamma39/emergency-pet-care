@@ -27,6 +27,20 @@ html {
     min-height: 100%;
     font-size: 62.5%; //1 rem = 10px; 10 / 16 = 62.5%
     color: var(--color-black);
+
+    //font sizes for media queries
+    @include respond(tab-land) {
+        font-size: 56.25%; //9px
+    }
+
+    @include respond(tab-port) {
+        font-size: 50%; //8px
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%; //12px
+    }
+
 }
 
 .welcome-page {

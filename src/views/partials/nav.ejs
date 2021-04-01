@@ -2,6 +2,11 @@
     <div class="navigation__logo">
         <a href="/" class="navigation__logo-text">Pet<span class="navigation__logo-text2">Safe</span></a>
     </div>
+    <input type="checkbox" class="navigation__toggle" id="toggle">
+    <label for="toggle" class="navigation__label">
+        <span class="navigation__hamburger"></span>
+    </label>
+    
     
     <ul class="navigation__list">
         <li class="navigation__item"><a href="/#about" class="navigation__link">About</a></li>
@@ -10,9 +15,9 @@
     </ul>
     
     <% if (currentUser) { %> 
-        <button class="navigation__dashboard" id="dashboard-btn">Dashboard</button>
+        <a href="#" class="navigation__dashboard" id="dashboard-btn">Dashboard</a>
     <% } else{ %> 
-        <button class="navigation__signup" id="signup">Register</button>
+        <a href="#" class="navigation__signup" id="signup">Register</a>
         
     <% } %> 
 </div>

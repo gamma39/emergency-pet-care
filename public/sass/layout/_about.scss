@@ -4,11 +4,29 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    @include respond(tab-port) {
+        min-height: 50vh;
+        flex-direction: column;
+        width: 100vw;
+        justify-content: start;
+    }
     
 
     &__left-side {
         word-wrap: break-word;
         width: 40%;
+
+        @include respond(tab-port) {
+            width: 100vw;
+            word-break: normal;
+            margin-top: 2rem;
+            padding: 0 5rem;
+        }
+
+        @include respond(phone) {
+            margin-top: 5rem;
+        }
         
     }
 
@@ -28,6 +46,14 @@
         grid-template-columns: 1fr 1fr 2fr;
         word-wrap: break-word;
         width: 40%;
+
+        @include respond(tab-port) {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            word-wrap: normal;
+            padding: 0 5rem;
+        }
         
     }
     &__dog-img, &__cat-img {
@@ -38,6 +64,11 @@
         max-width: 34.7rem;
         max-height: 47rem;
         grid-column: 2 / span 2;
+
+        @include respond(tab-port) {
+            margin: 0 auto 0 auto;
+            max-width: 24rem;
+        }
     }
 
     &__cat-img {
@@ -46,6 +77,10 @@
         align-self: end;
         padding-top: 22rem;
         z-index: 1;
+
+        @include respond(tab-port) {
+            display: none;
+        }
     }
 
     &__text2 {

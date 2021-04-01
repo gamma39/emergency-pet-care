@@ -6,6 +6,10 @@
     align-items: center;
     justify-content: flex-start;
 
+    @include respond(tab-port) {
+        min-height: 50vh;
+    }
+
     &__title {
         margin-bottom: 2rem;
     }

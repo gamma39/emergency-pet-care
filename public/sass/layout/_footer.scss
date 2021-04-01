@@ -1,10 +1,15 @@
 .footer {
     background-color: var(--color-blue);
-    padding: 10rem 2rem;
+    padding: 4rem 2rem;
     color: #fff;
     font-size: 1.8rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
+    @include respond(tab-port) {
+        display: flex;
+        flex-direction: column;
+    }
     
 
     &__section {
@@ -14,6 +19,12 @@
         align-items: center;
         justify-content: center;
         grid-row: 1 / 4;
+
+        @include respond(tab-port) {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0;
+        }
     }
 
     &__title {
@@ -27,8 +38,17 @@
         font-size: 3.2rem;
     }
 
+    &__address-title, &__follow-title, &__legal-title {
+        @include respond(tab-port) {
+            margin-bottom: 1rem;
+        }
+        
+    }
+
     &__address-title {
         justify-self: center;
     }
+
+
     
 }
