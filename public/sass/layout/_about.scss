@@ -5,6 +5,7 @@
     justify-content: space-around;
     align-items: center;
 
+
     @include respond(tab-port) {
         min-height: 50vh;
         flex-direction: column;

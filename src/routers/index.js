@@ -6,4 +6,8 @@ router.get('/', verify, (req, res) => {
     res.render('welcome')
 })
 
+router.get('/register', verify, (req, res) => {
+    res.render('register')
+})
+
 module.exports = router

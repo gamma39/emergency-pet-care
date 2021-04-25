@@ -377,6 +377,10 @@ html {
     border: none;
     margin-bottom: 3rem;
     padding-left: 1rem; }
+    .contact__input:focus, .contact__message:focus {
+      outline: none;
+      background-color: var(--color-grey);
+      color: var(--color-white); }
     @media only screen and (max-width: 56.25em) {
       .contact__input, .contact__message {
         font-size: 2rem;
@@ -406,6 +410,11 @@ html {
     font-size: 3.6rem;
     background-color: var(--color-white);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
+    .contact__submit:active, .contact__submit:focus, .contact__submit:hover {
+      outline: none;
+      color: var(--color-blue);
+      background-color: var(--color-white);
+      transform: scale(0.95) translateY(5px); }
     @media only screen and (max-width: 56.25em) {
       .contact__submit {
         font-size: 2rem;
@@ -435,16 +444,22 @@ html {
     font-size: 2rem;
     margin-bottom: 2rem;
     padding: 3rem; }
+    @media only screen and (max-width: 37.5em) {
+      .faq__accordian {
+        font-size: 1.8rem;
+        padding: 3rem 1rem; } }
   .faq__question {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    cursor: pointer; }
+    flex-wrap: wrap; }
   .faq__input {
     display: none; }
   .faq__label {
     cursor: pointer; }
+    @media only screen and (max-width: 37.5em) {
+      .faq__label {
+        width: 50%; } }
   .faq__remove-outline, .faq__add-outline {
     color: var(--color-blue); }
   .faq__remove-outline {
@@ -686,9 +701,37 @@ html {
     .navigation__toggle:checked ~ .navigation__signup, .navigation__dashboard {
       display: inline-block; } }
 
-.login-section__title {
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  letter-spacing: .3rem;
-  text-transform: uppercase; }
+.registration-form {
+  height: 100vh;
+  padding-top: 11rem;
+  padding-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr 1fr;
+  grid-template-rows: repeat(12, auto);
+  grid-column-gap: 1em;
+  align-items: center;
+  background-image: url(../../pictures/y-so-serious-white.png);
+  background-size: auto;
+  background-repeat: repeat;
+  font-family: lato;
+  font-size: 2rem; }
+  .registration-form__placeholder {
+    grid-column: 2 / 3; }
+  .registration-form__input {
+    font-family: lato;
+    font-size: 2rem; }
+  .registration-form__submit {
+    grid-row: 11;
+    grid-column: 3/4;
+    justify-self: center;
+    font-family: lato;
+    font-size: 2rem;
+    width: 50%;
+    height: 100%;
+    border-radius: 2.5rem;
+    border: none;
+    font: inherit;
+    font-weight: 300;
+    font-size: 3.6rem;
+    background-color: var(--color-white);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }

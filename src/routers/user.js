@@ -12,17 +12,17 @@ router.get("/dashboard", auth, async (req, res) => {
 
 //CREATE NEW USER ENDPOINT  
 router.post("/users/register", async (req, res) => {
-  const { email, userName, password, password2 } = req.body;
+  const { firstName, lastName, email, password, confirmPassword, streetAddress, streetAddress2, city, state, zipCode } = req.body;
   let errors = [];
   
 
   //Check that all fields are filled out
-  if (!userName || !email || !password || !password2) {
+  if (!firstName || !lastName || !email || !password || !confirmPassword|| !streetAddress || !city || !state || !zipCode) {
     errors.push({ msg: "Please fill in all fields" });
   }
 
   //Check that passwords match
-  if (password !== password2) {
+  if (password !== confirmPassword) {
     errors.push({ msg: "Passwords do not match" });
   }
 
@@ -30,12 +30,20 @@ router.post("/users/register", async (req, res) => {
   if (password.length < 7) {
     errors.push({ msg: "Password should be at least 7 characters" });
   }
+
   //Render errors to page if any exist
   if (errors.length > 0) {
-    res.render("welcome", {
+    console.log(errors)
+    res.render("register", {
       errors,
+      firstName,
+      lastName,
       email,
-      userName,
+      streetAddress,
+      streetAddress2,
+      city,
+      state,
+      zipCode
       
     });
   } else {
@@ -43,19 +51,36 @@ router.post("/users/register", async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user) {
+      console.log("fail 1")
       errors.push({ msg: "Email is already registered" });
-      res.render("welcome", {
+      res.render("register", {
         errors,
+        firstName,
+        lastName,
         email,
-        userName,
+        streetAddress,
+        streetAddress2,
+        city,
+        state,
+        zipCode
         
       });
     } else {
+      console.log("success 1")
         //create new instance of user
       const newUser = new User({
+        firstName,
+        lastName,
         email,
-        userName,
         password,
+        address: {
+          streetAddress,
+          streetAddress2,
+          city,
+          state,
+          zipCode
+        }
+        
       });
 
       try {
@@ -74,14 +99,14 @@ router.post("/users/register", async (req, res) => {
       }
     }
   }
-});
+ });
 
 
 //login user endpoint
 router.post("/users/login", async (req, res) => {
   try {
     const user = await User.findByCredentials(
-      req.body.userName,
+      req.body.email,
       req.body.password
     );
     const token = await user.generateAuthToken();

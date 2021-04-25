@@ -4,7 +4,23 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+
 const userSchema = new mongoose.Schema({
+
+    firstName: {
+        type: String,
+        required: true,
+        trim: true,
+        lowercase: true
+    },
+
+    lastName: {
+        type: String,
+        required: true,
+        trim: true,
+        lowercase: true
+    },
     
     email: {
         type: String,
@@ -18,16 +34,11 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    userName: {
-        type: String,
-        require: true,
-        unique: true,
-        trim: true
-    },
+
     password: {
         type: String,
         required: true,
-        minlength: 7,
+        //minlength: 7,
         trim: true,
         validate(value) {
             if (value.toLowerCase().includes('password')) {
@@ -36,6 +47,50 @@ const userSchema = new mongoose.Schema({
         }
         
     },
+
+    address: {
+        streetAddress: {
+            type: String,
+            required: true,
+            trim: true,
+            lowercase: true
+
+        },
+        streetAddress2: {
+            type: String,
+            trim: true,
+            lowercase: true
+
+        },
+        city: {
+            type: String,
+            required: true,
+            trim: true,
+            lowercase: true
+        },
+        state: {
+            type: String,
+            uppercase: true,
+            required: true,
+            enum: statesArray
+        },
+        zipCode: {
+            type: String,
+            required: true,
+            trim: true,
+            validate(value)  {
+                zipExpression = /^[0-9]{5}(?:[-/s][0-9]{4})?$/;
+
+                if (!zipExpression.test(value)) {
+                    throw new Error('Zip code is invalid')
+                }
+            }
+            
+        }
+
+    },
+
+
     tokens: [{
         token: {
             type: String,
