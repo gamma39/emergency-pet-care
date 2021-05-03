@@ -2,6 +2,16 @@
     <header class="dashboard-page__header">
         <%- include ("partials/nav") %> 
     </header>
+
+    <a href="/users/near" class="find-button">Get Help</a>
+
+    <% if (number == 0) { %> 
+        <p class="dashboard-page__response">There are <%= number %> people available to help in your area. </p>
+    <% } else if (number == 1) { %> 
+        <p class="dashboard-page__response">There is <%= number %> person available to help in your area. </p>
+    <% } else { %> 
+        <p class="dashboard-page__response">There is no one available to help at the moment.</p>
+    <% } %> 
     
     <%- include ("partials/footer") %> 
 </div>

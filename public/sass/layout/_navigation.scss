@@ -157,19 +157,19 @@
 
     
 
-    &__signup, &__dashboard {
+    &__button {
         display: inline-block;
         text-decoration: none;
         text-align: center;
         color: var(--color-white);
         background-color: var(--color-blue);
         width: 20.4rem;
-        height: 5.469rem;
+        //height: 5.469rem;
         border-radius: 2.5rem;
         font: inherit;
         font-weight: 300;
         font-size: 2.4rem;
-        padding: 1rem 2rem;
+        padding: 1.5rem 2rem;
         margin-top: 2rem;
         box-shadow: 1px 1px 2px rgba(0,0,0, 0.5);          
 
@@ -189,7 +189,7 @@
         
     }
 
-    &__toggle:checked ~ &__signup, &__dashboard {
+    &__toggle:checked ~ &__button {
         @include respond(tab-land) {
             display: inline-block;
         }

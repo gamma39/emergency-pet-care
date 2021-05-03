@@ -3,11 +3,29 @@ const verify = require('../middleware/verify')
 const router = express.Router()
 
 router.get('/', verify, (req, res) => {
-    res.render('welcome')
+    if (req.user) {
+        res.render('welcome', {
+            button: 'logout'
+        })
+    } else {
+        res.render('welcome', {
+            button: 'register'
+        })
+    }
+    
 })
 
 router.get('/register', verify, (req, res) => {
-    res.render('register')
+    if (req.user) {
+        res.render('dashboard', {
+            button: "logout"
+        })
+    } else {
+        res.render('register', {
+            button: "login"
+        })
+    }
+    
 })
 
 module.exports = router

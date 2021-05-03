@@ -2,24 +2,34 @@ const express = require("express");
 const router = new express.Router();
 const User = require("../models/user");
 const auth = require("../middleware/auth");
+const geocode = require("../utilities/geocode")
 const path = require("path");
+
+
+
 
 
 //backend page route for users
 router.get("/dashboard", auth, async (req, res) => {
-  res.render("dashboard");
+  res.render("dashboard", {
+    button: "logout",
+    number: 0
+  });
 });
 
 //CREATE NEW USER ENDPOINT  
 router.post("/users/register", async (req, res) => {
   const { firstName, lastName, email, password, confirmPassword, streetAddress, streetAddress2, city, state, zipCode } = req.body;
+  
   let errors = [];
   
 
   //Check that all fields are filled out
   if (!firstName || !lastName || !email || !password || !confirmPassword|| !streetAddress || !city || !state || !zipCode) {
     errors.push({ msg: "Please fill in all fields" });
-  }
+  } 
+    
+  
 
   //Check that passwords match
   if (password !== confirmPassword) {
@@ -30,6 +40,10 @@ router.post("/users/register", async (req, res) => {
   if (password.length < 7) {
     errors.push({ msg: "Password should be at least 7 characters" });
   }
+
+  let coordinates = await geocode(streetAddress, city, state, zipCode)
+  
+  
 
   //Render errors to page if any exist
   if (errors.length > 0) {
@@ -67,6 +81,7 @@ router.post("/users/register", async (req, res) => {
       });
     } else {
       console.log("success 1")
+      
         //create new instance of user
       const newUser = new User({
         firstName,
@@ -79,7 +94,12 @@ router.post("/users/register", async (req, res) => {
           city,
           state,
           zipCode
+        },
+        location: {
+          "type": "Point",
+          coordinates
         }
+
         
       });
 
@@ -113,12 +133,13 @@ router.post("/users/login", async (req, res) => {
     res.cookie("auth_token", token);
     res.redirect("/dashboard");
   } catch (e) {
+    console.log('user not found')
     res.status(400).send("Invalid user input");
   }
 });
 
 //Logout user
-router.post("/users/logout", auth, async (req, res) => {
+router.get("/users/logout", auth, async (req, res) => {
     try {
         req.user.tokens.splice(0, req.user.tokens.length)
         await req.user.save()
@@ -128,5 +149,28 @@ router.post("/users/logout", auth, async (req, res) => {
         res.status(500).send()
     }
 } )
+
+//find users nearby
+router.get("/users/near", auth, async (req, res) => {
+  try {
+    const query = {
+      email: { $ne: req.user.email },
+      location: {
+        $nearSphere: {
+          $geometry: req.user.location,
+          $maxDistance: 32187, //20 miles
+          
+        } 
+      }
+    }
+    const nearbyUsers = await User.find(query)
+    res.render("dashboard", {
+      button: "logout",
+      number: nearbyUsers.length
+    })
+  } catch (e) {
+    res.status(400).send(e)
+  }
+})
 
 module.exports = router;

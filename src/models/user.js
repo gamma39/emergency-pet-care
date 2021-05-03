@@ -90,6 +90,13 @@ const userSchema = new mongoose.Schema({
 
     },
 
+    location: {
+        type: { type: String, default: 'Point'},
+        coordinates: {
+            type: [Number]
+        } 
+    },
+
 
     tokens: [{
         token: {
@@ -112,8 +119,8 @@ userSchema.pre('save', async function(next) {
 })
 
 //find user by credentials 
-userSchema.statics.findByCredentials = async (userName, password) => {
-    const user = await User.findOne({ userName })
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email })
 
     if(!user) {
         throw new Error('Unable to log in')
@@ -137,6 +144,8 @@ userSchema.methods.generateAuthToken = async function () {
     await user.save()
     return token
 }   
+
+userSchema.index({ location: "2dsphere" })
 
 const User = mongoose.model('User', userSchema)
 

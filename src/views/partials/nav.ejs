@@ -12,12 +12,17 @@
         <li class="navigation__item"><a href="/#about" class="navigation__link">About</a></li>
         <li class="navigation__item"><a href="/#contact" class="navigation__link">Contact</a></li>
         <li class="navigation__item"><a href="/#faq" class="navigation__link">FAQs</a></li>
+        <li class="navigation__item"><a href="/dashboard" class="navigation__link">Dashboard</a></li>
     </ul>
-    
-    
-        <a href="/register" class="navigation__signup" id="signup">Register</a>
+
         
-     
+        <% if (button == "logout") { %> <!-- button if on dashboard -->
+            <a href="/users/logout" class="navigation__button" id="logout">Logout</a>
+        <% }  else if (button == "login") { %> <!-- button if on register page -->
+            <a href="/" class="navigation__button" id="login">Login</a>
+        <% } else { %> <!-- button if on welcome page -->
+            <a href="/register" class="navigation__button" id="register">Register</a>
+        <% } %> 
 </div>
 
 
